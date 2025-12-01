@@ -1,6 +1,18 @@
-# services:
+version: '3.8'
+
+services:
   # backend:
 
   # gateway:
 
-  # mongo:
+  mongo:
+    image: mongo:6.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+    volumes:
+      - mongo_dev_data:/data/db
+
+volumes:
+  mongo_dev_data:
